@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @one_time_password %>
+
+<div>
+  <%= link_to "Edit this one time password", edit_one_time_password_path(@one_time_password) %> |
+  <%= link_to "Back to one time passwords", one_time_passwords_path %>
+
+  <%= button_to "Destroy this one time password", @one_time_password, method: :delete %>
+</div>

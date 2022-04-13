@@ -1,0 +1,17 @@
+<%= form_with model: person, local: true do |form| %>
+  <%= form.text_field :name, placeholder: "name" %>
+<% end %>
+
+<%= form_with url: "/one_time_passwords", method: :post do |form| %>
+  <%= form.text_field :phone_number, placeholder: "phone number" %>
+  <%= submit_tag("send") %>
+<% end %>
+
+
+
+<%= form_with model: person, local: true do |form| %>
+    <div><%= form.text_field :verification_code, placeholder: "verification code" %></div>
+    <div><%= form.email_field :email, placeholder: "email" %></div>
+    <div><%= form.date_field :available_on, placeholder: "available on" %></div>
+    <div><%= form.select :city, ["Berlin", "Chicago", "Madrid"] %></div>
+<% end %>
