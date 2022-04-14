@@ -1,0 +1,45 @@
+---
+http_interactions:
+- request:
+    method: put
+    uri: https://apac-consumer-web-prod-eu.herokuapp.com/sms_verifier/SMb39c336f69e343c9b0474ab644a38a94
+    body:
+      encoding: UTF-8
+      string: '{"code":"3435"}'
+    headers:
+      User-Agent:
+      - Faraday v2.2.0
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - Cowboy
+      Date:
+      - Thu, 14 Apr 2022 06:59:28 GMT
+      Connection:
+      - keep-alive
+      Content-Type:
+      - text/html; charset=UTF-8
+      X-Request-Id:
+      - 9ebe28d3-3da1-4d9f-8ddf-13e75307f903
+      X-Runtime:
+      - '0.037270'
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      Content-Length:
+      - '0'
+      Via:
+      - 1.1 vegur
+    body:
+      encoding: ASCII-8BIT
+      string: '{"sid":"SMce282b2d94734cf3aebaf1aed24c0d6a"}'
+  recorded_at: Thu, 14 Apr 2022 06:59:29 GMT
+recorded_with: VCR 6.1.0

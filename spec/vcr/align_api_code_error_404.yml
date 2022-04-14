@@ -1,0 +1,45 @@
+---
+http_interactions:
+- request:
+    method: put
+    uri: https://apac-consumer-web-prod-eu.herokuapp.com/sms_verifier/
+    body:
+      encoding: UTF-8
+      string: '{"code":"3435"}'
+    headers:
+      User-Agent:
+      - Faraday v2.2.0
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      Server:
+      - Cowboy
+      Date:
+      - Thu, 14 Apr 2022 07:11:59 GMT
+      Connection:
+      - keep-alive
+      Content-Type:
+      - text/html; charset=UTF-8
+      X-Request-Id:
+      - de26e19a-607b-4a31-a109-464cf97a08ca
+      X-Runtime:
+      - '0.003557'
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      Content-Length:
+      - '0'
+      Via:
+      - 1.1 vegur
+    body:
+      encoding: UTF-8
+      string: ''
+  recorded_at: Thu, 14 Apr 2022 07:12:00 GMT
+recorded_with: VCR 6.1.0
