@@ -1,0 +1,66 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://apac-consumer-web-prod-eu.herokuapp.com/sms_verifier
+    body:
+      encoding: UTF-8
+      string: '{"verification":{"phone_number":"13900888888","country_code":"cn"}}'
+    headers:
+      User-Agent:
+      - Faraday v2.2.0
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - Cowboy
+      Date:
+      - Thu, 14 Apr 2022 05:50:08 GMT
+      Connection:
+      - keep-alive
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Download-Options:
+      - noopen
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      Content-Type:
+      - application/json; charset=utf-8
+      Etag:
+      - W/"9165262fb2613abfa1082bf7769a79fc"
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Set-Cookie:
+      - lang=sg; path=/; secure
+      - locale=sg; path=/; secure
+      X-Request-Id:
+      - 79c83e8c-87c2-4d1f-be46-a83b1a85370e
+      X-Runtime:
+      - '0.542742'
+      Vary:
+      - Accept-Encoding
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      Transfer-Encoding:
+      - chunked
+      Via:
+      - 1.1 vegur
+    body:
+      encoding: ASCII-8BIT
+      string: '{"sid":"SMce282b2d94734cf3aebaf1aed24c0d6a"}'
+  recorded_at: Thu, 14 Apr 2022 05:50:09 GMT
+recorded_with: VCR 6.1.0

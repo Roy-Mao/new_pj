@@ -1,0 +1,64 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://apac-consumer-web-prod-eu.herokuapp.com/sms_verifier
+    body:
+      encoding: UTF-8
+      string: '{"verification":{"phone_number":"1ab","country_code":"cn"}}'
+    headers:
+      User-Agent:
+      - Faraday v2.2.0
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 500
+      message: Internal Server Error
+    headers:
+      Server:
+      - Cowboy
+      Date:
+      - Thu, 14 Apr 2022 07:02:28 GMT
+      Connection:
+      - keep-alive
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Download-Options:
+      - noopen
+      X-Permitted-Cross-Domain-Policies:
+      - none
+      Referrer-Policy:
+      - strict-origin-when-cross-origin
+      Content-Type:
+      - application/json; charset=utf-8
+      Cache-Control:
+      - no-cache
+      Set-Cookie:
+      - lang=sg; path=/; secure
+      - locale=sg; path=/; secure
+      X-Request-Id:
+      - 1f5aaa8e-21b6-44c7-821b-180a32e12a2e
+      X-Runtime:
+      - '0.428527'
+      Vary:
+      - Accept-Encoding
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      Transfer-Encoding:
+      - chunked
+      Via:
+      - 1.1 vegur
+    body:
+      encoding: ASCII-8BIT
+      string: '{"status":500}'
+  recorded_at: Thu, 14 Apr 2022 07:02:29 GMT
+recorded_with: VCR 6.1.0
