@@ -21,17 +21,21 @@ class PeopleController < ApplicationController
 
   # POST /people or /people.json
   def create
-    puts "#{person_params}"
-    @person = Person.new(person_params)
+    number_verifier = PhoneNumberVerifier.new(
+      phone_number: params[:person][:phone_number]
+    )
 
-    respond_to do |format|
-      if @person.save
-        format.html { redirect_to person_url(@person), notice: "Person was successfully created." }
-        format.json { render :show, status: :created, location: @person }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @person.errors, status: :unprocessable_entity }
-      end
+    if number_verifier.valid_number?
+      @person = Person.new(
+        name: params[:person][:name],
+        phone_number: params[:person][:phone_number],
+        sid: number_verifier.sid
+      ).save!
+  
+      redirect_to people_path(@person), notice: "one time password sent successfully."
+    else
+      flash[:alert] = "the phone number is not valid"
+      redirect_back fallback_location: { action: "new" }, status: :unprocessable_entity
     end
   end
 
@@ -66,6 +70,14 @@ class PeopleController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def person_params
-      params.require(:person).permit(:name, :email, :phone_number, :user_type, :available_on)
+      params.require(:person).permit(
+        :name,
+        :phone_number,
+        :available_on,
+        :email,
+        :user_types,
+        :verification_code,
+        :search
+      )
     end
 end
