@@ -17,5 +17,13 @@ class Person < ApplicationRecord
   def available_date_must_be_in_the_future
     errors.add(:available_on, "can't be in the past") if !available_on.nil? && available_on < Date.today
   end
+
+  def self.search(name_condition)
+    # warning: "" or nil
+    if name_condition.present?
+      Person.where(name: name_condition)
+    else
+      Person.all
+    end
   end
 end
