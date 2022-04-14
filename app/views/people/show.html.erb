@@ -1,10 +1,5 @@
+<h1>Contact Form</h1>
 <p style="color: green"><%= notice %></p>
 
 <%= render @person %>
-
-<div>
-  <%= link_to "Edit this person", edit_person_path(@person) %> |
-  <%= link_to "Back to people", people_path %>
-
-  <%= button_to "Destroy this person", @person, method: :delete %>
-</div>
+<%= render "form", person: @person %>

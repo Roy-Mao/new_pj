@@ -1,17 +1,39 @@
-<%= form_with model: person, local: true do |form| %>
-  <%= form.text_field :name, placeholder: "name" %>
-<% end %>
-
-<%= form_with url: "/one_time_passwords", method: :post do |form| %>
-  <%= form.text_field :phone_number, placeholder: "phone number" %>
-  <%= submit_tag("send") %>
-<% end %>
-
-
+<p id="notice"><%= notice %></p>
+<p id="alert"><%= alert %></p>
 
 <%= form_with model: person, local: true do |form| %>
+  <% if person.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(person.errors.count, "error") %> prohibited this person from being saved:</h2>
+
+      <ul>
+        <% person.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div><%= form.text_field :name, placeholder: "name" %></div>
+  <div><%= form.text_field :phone_number, placeholder: "phone number" %><%= submit_tag("send") %></div>
+<% end %>
+
+
+
+<%= form_with model: person, local: true, method: "PUT" do |form| %>
+  <% if person.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(person.errors.count, "error") %> prohibited this person from being saved:</h2>
+
+      <ul>
+        <% person.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
     <div><%= form.text_field :verification_code, placeholder: "verification code" %></div>
     <div><%= form.email_field :email, placeholder: "email" %></div>
     <div><%= form.date_field :available_on, placeholder: "available on" %></div>
-    <div><%= form.select :user_type, ["I am a child", "I am a adult", "I am a parent"] %></div>
+    <div><%= form.select :user_type, {"I am a child": 1, "I am a parent": 2, "I am an adult": 3}, { include_blank: 'please choose'} %></div>
+    <div><%= submit_tag("submit") %></div>
 <% end %>

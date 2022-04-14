@@ -1,18 +1,25 @@
 <p style="color: green"><%= notice %></p>
 
-<h1>People</h1>
+<h1>Contact list</h1>
 
+<%= form_tag(people_path, method: :get) do %>
+  <%= text_field_tag(:search, params[:search]) %>
+  <%= submit_tag("Search") %>
+<% end %>
 
 <div id="people">
   
   <% @people.each do |person| %>
     <div>
-    <%= person.id %>
-    <%= person.name %>
-    <%= person.phone_number %>
-    <%= person.email %>
+      <% if person.verified %>
+        <%= person.id %>
+        <%= person.name %>
+        <%= person.phone_number %>
+        <%= person.email %>
+        <%= person.available_on %>
+      <% end %>
     </div>
   <% end %>
 </div>
 
-<%= link_to "New person", new_person_path %>
+<%= link_to "go to contact form", new_person_path %>
