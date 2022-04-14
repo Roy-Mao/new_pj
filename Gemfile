@@ -57,6 +57,7 @@ group :development, :test do
   gem 'pry'
   gem 'pry-remote'
   gem 'pry-nav'
+  gem "faraday"
 end
 
 group :development do
