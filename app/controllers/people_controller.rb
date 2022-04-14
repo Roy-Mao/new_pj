@@ -15,10 +15,6 @@ class PeopleController < ApplicationController
     @person = Person.new
   end
 
-  # GET /people/1/edit
-  def edit
-  end
-
   # POST /people or /people.json
   def create
     number_verifier = PhoneNumberVerifier.new(
@@ -54,17 +50,6 @@ class PeopleController < ApplicationController
         )
       end
     end
-  end
-
-  # DELETE /people/1 or /people/1.json
-  def destroy
-    @person.destroy
-
-    respond_to do |format|
-      format.html { redirect_to people_url, notice: "Person was successfully destroyed." }
-      format.json { head :no_content }
-    end
-  end
 
   private
     # Use callbacks to share common setup or constraints between actions.
