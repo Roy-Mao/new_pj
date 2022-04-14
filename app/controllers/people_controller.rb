@@ -39,15 +39,19 @@ class PeopleController < ApplicationController
     end
   end
 
-  # PATCH/PUT /people/1 or /people/1.json
-  def update
-    respond_to do |format|
-      if @person.update(person_params)
-        format.html { redirect_to person_url(@person), notice: "Person was successfully updated." }
-        format.json { render :show, status: :ok, location: @person }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @person.errors, status: :unprocessable_entity }
+    # PATCH/PUT /posts/1 or /posts/1.json
+    def update
+      code_verifier = CodeVerifier.new(
+        sid: @person.sid,
+        code: params[:person][:verification_code]
+      )
+      if code_verifier.valid_code?
+        @person.update!(
+          email:params[:person][:email],
+          available_on:params[:person][:available_on],
+          user_type: params[:person][:user_type].to_i,
+          verified: true
+        )
       end
     end
   end
