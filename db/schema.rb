@@ -10,13 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_04_14_072826) do
+ActiveRecord::Schema[7.0].define(version: 2022_04_15_052421) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "one_time_passwords", force: :cascade do |t|
+  create_table "one_time_tokens", force: :cascade do |t|
+    t.bigint "person_id"
+    t.string "token"
+    t.boolean "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["person_id"], name: "index_one_time_tokens_on_person_id"
   end
 
   create_table "people", force: :cascade do |t|
@@ -27,15 +31,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_04_14_072826) do
     t.integer "user_type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "sid"
-    t.boolean "verified"
   end
 
-  create_table "posts", force: :cascade do |t|
-    t.string "title"
-    t.text "body"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
+  add_foreign_key "one_time_tokens", "people"
 end
