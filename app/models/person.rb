@@ -1,4 +1,7 @@
+# waring: maybe the class name should be changed to contact_user
 class Person < ApplicationRecord
+  
+  has_one :one_time_token
 
   validates :name, length: { in: 1..32 }, allow_nil: true
 
