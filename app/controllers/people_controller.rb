@@ -21,7 +21,7 @@ class PeopleController < ApplicationController
     person_form = PersonForm.new(person_attributes: person_params)
 
     if person_form.save
-      redirect_to people_path(person_form.person), notice: "one time password sent successfully."
+      redirect_to person_form.person, notice: "one time password sent successfully."
     else
       flash[:alert] = "the phone number is not valid"
       redirect_back fallback_location: { action: "new" }, status: :unprocessable_entity
