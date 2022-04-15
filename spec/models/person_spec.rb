@@ -7,7 +7,7 @@ RSpec.describe Person, :type => :model do
       phone_number: "111111111111",
       email: "fake_email@yahoo.com",
       available_on: Date.today + 1.day,
-      user_types: 1
+      user_type: 1
     )
   }
   
@@ -15,9 +15,9 @@ RSpec.describe Person, :type => :model do
     expect(subject).to be_valid
   end
 
-  context "test for name field" do
-    it "is not valid without a name" do
-        subject.name = nil
+  context "test for phone_number field" do
+    it "is not valid without a phone_number" do
+        subject.phone_number = nil
         expect(subject).to_not be_valid
     end
   end
