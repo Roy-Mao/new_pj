@@ -17,18 +17,11 @@ class PeopleController < ApplicationController
 
   # POST /people or /people.json
   def create
-    number_verifier = PhoneNumberVerifier.new(
-      phone_number: params[:person][:phone_number]
-    )
 
-    if number_verifier.valid_number?
-      @person = Person.new(
-        name: params[:person][:name],
-        phone_number: params[:person][:phone_number],
-        sid: number_verifier.sid
-      ).save!
-  
-      redirect_to people_path(@person), notice: "one time password sent successfully."
+    person_form = PersonForm.new(person_attributes: person_params)
+
+    if person_form.save
+      redirect_to people_path(person_form.person), notice: "one time password sent successfully."
     else
       flash[:alert] = "the phone number is not valid"
       redirect_back fallback_location: { action: "new" }, status: :unprocessable_entity
