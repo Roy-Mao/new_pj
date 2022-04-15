@@ -11,13 +11,11 @@
   
   <% @people.each do |person| %>
     <div>
-      <% if person.verified %>
-        <%= person.id %>
-        <%= person.name %>
-        <%= person.phone_number %>
-        <%= person.email %>
-        <%= person.available_on %>
-      <% end %>
+      <%= person.id %>
+      <%= person.name %>
+      <%= person.phone_number %>
+      <%= person.email %>
+      <%= person.available_on %>
     </div>
   <% end %>
 </div>
